@@ -321,7 +321,7 @@ class _CreateAccountState extends State<CreateAccount> {
                       });
                       try {
                         var user = await LoginApi.register(name, email, password, confirmPassword, role);
-
+                        print(user);
                         if (user != null) {
                           Navigator.push(
                               context,

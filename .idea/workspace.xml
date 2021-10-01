@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68bde603-f912-4594-8164-24bca9c99be8" name="Default Changelist" comment="">
+    <list default="true" id="68bde603-f912-4594-8164-24bca9c99be8" name="Default Changelist" comment="first commit">
       <change afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/247ac3b832a138006d154b965a15b258/.filecache" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/247ac3b832a138006d154b965a15b258/app.dill" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/247ac3b832a138006d154b965a15b258/debug_android_application.stamp" afterDir="false" />
@@ -921,17 +921,18 @@
       <option name="presentableId" value="Default" />
       <updated>1632996725023</updated>
     </task>
+    <task id="LOCAL-00001" summary="first commit">
+      <created>1633103871669</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1633103871669</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/services/roles_api.dart</url>
-          <line>10</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
   </component>
 </project>
