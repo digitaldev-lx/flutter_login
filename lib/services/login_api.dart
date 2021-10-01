@@ -37,11 +37,18 @@ class LoginApi{
       'password': password,
       'password_confirmation': confirmPassword
     };
+    print("data");
+    print(data);
+    print("-----------");
+
+
     var response = await http.post(apiUrl,
-        body: data);
+        body: json.encode(data));
 
     Map _responseBody = json.decode(response.body);
-    print(_responseBody);
+    print("response");
+    print(response);
+    print("-------------");
 
     if(response.statusCode == 201){
       user = User.fromJson(_responseBody);
