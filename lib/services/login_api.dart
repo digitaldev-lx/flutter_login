@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:http/http.dart';
+// import 'package:http/http.dart';
 import 'package:loginkit/services/user.dart';
 
 class LoginApi{
@@ -28,6 +28,8 @@ class LoginApi{
   static Future<User> register(String name, String email, String password, String confirmPassword, String role) async {
     var endpoint = 'register';
     var user;
+    var statusCode;
+    var body;
     var apiUrl = url + endpoint;
 
     var data = {
@@ -38,24 +40,30 @@ class LoginApi{
       'password_confirmation': confirmPassword
     };
     print("data");
-    print(data);
+    print(json.encode(data));
     print("-----------");
 
 
     var response = await http.post(apiUrl,
-        body: json.encode(data));
+        headers: {"Content-Type": "application/json"},
+        body: json.encode(data)
+    ).then((http.Response response) {
+      body = response.body;
+    });
 
-    Map _responseBody = json.decode(response.body);
-    print("response");
-    print(response);
-    print("-------------");
+    Map _responseBody = json.decode(body);
 
-    if(response.statusCode == 201){
+    print("Response Body");
+    print(_responseBody);
+
+
+    if(statusCode == 201){
       user = User.fromJson(_responseBody);
     }else{
       user = null;
     }
     return user;
+
   }
 
 
