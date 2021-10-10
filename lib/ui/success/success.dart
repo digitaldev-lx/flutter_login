@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:confetti/confetti.dart';
+import 'package:loginkit/components/rounded_btn/rounded_btn.dart';
+import 'package:loginkit/services/login_api.dart';
+import 'package:loginkit/ui/login/login.dart';
 import 'dart:math';
+
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SuccessScreen extends StatefulWidget {
   @override
@@ -13,12 +18,14 @@ class _SuccessScreenState extends State<SuccessScreen> {
 
   @override
   void initState() {
+
     ConfettiController(duration: const Duration(seconds: 5));
     _controllerBottomCenter =
         ConfettiController(duration: const Duration(seconds: 10));
     WidgetsBinding.instance
         .addPostFrameCallback((_) => _controllerBottomCenter.play());
     super.initState();
+
   }
 
   @override
@@ -75,9 +82,44 @@ class _SuccessScreenState extends State<SuccessScreen> {
           SizedBox(
               height: 200,
               width: 200,
-              child: SvgPicture.asset('images/success.svg')),
+              child: Image.asset('images/celebration.png')),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+              child: RoundedButton(
+                btnText: 'LOGOUT',
+                color: Colors.redAccent,
+                onPressed: () async {
+                  FocusScopeNode currentFocus = FocusScope.of(context);
+
+                  try {
+                    var status = await LoginApi.logout();
+                    if (status) {
+                      if(!currentFocus.hasPrimaryFocus){
+                        currentFocus.unfocus();
+                      }
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Login()));
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    }
+
+                  } catch (e) {
+                    print(e);
+                  }
+                },
+              ),
+            ),
+          ),
         ],
+
       ),
     );
   }
+
+  final snackBar = SnackBar(content: Text(
+      'Impossible logout! Try it later.!', textAlign: TextAlign.center
+  ), backgroundColor: Colors.redAccent);
 }

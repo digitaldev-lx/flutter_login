@@ -18,7 +18,6 @@ class CreateAccount extends StatefulWidget {
 class _CreateAccountState extends State<CreateAccount> {
   bool showSpinner = false;
   String role;
-  // final _auth = FirebaseAuth.instance;
   String id;
   String name;
   String email;
@@ -84,13 +83,7 @@ class _CreateAccountState extends State<CreateAccount> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(
-                      'Name',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w300,
-                          fontSize: 13,
-                          color: Colors.white),
-                    ),
+
                     SizedBox(
                       height: 10,
                     ),
@@ -101,6 +94,10 @@ class _CreateAccountState extends State<CreateAccount> {
                       obscureText: false,
                       cursorColor: Colors.white,
                       decoration: InputDecoration(
+                        labelText: 'Name',
+                        labelStyle: TextStyle(
+                            color: Colors.white54
+                        ),
                         border: InputBorder.none,
                         fillColor: Color(0xfff3B324E),
                         filled: true,
@@ -123,13 +120,7 @@ class _CreateAccountState extends State<CreateAccount> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(
-                      'E-mail',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w300,
-                          fontSize: 13,
-                          color: Colors.white),
-                    ),
+
                     SizedBox(
                       height: 10,
                     ),
@@ -140,6 +131,10 @@ class _CreateAccountState extends State<CreateAccount> {
                       obscureText: false,
                       cursorColor: Colors.white,
                       decoration: InputDecoration(
+                        labelText: 'E-Mail',
+                        labelStyle: TextStyle(
+                            color: Colors.white54
+                        ),
                         border: InputBorder.none,
                         fillColor: Color(0xfff3B324E),
                         filled: true,
@@ -162,13 +157,13 @@ class _CreateAccountState extends State<CreateAccount> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(
+                    /*Text(
                       'Register as',
                       style: TextStyle(
                           fontWeight: FontWeight.w300,
                           fontSize: 13,
                           color: Colors.white),
-                    ),
+                    ),*/
                     SizedBox(
                       height: 5,
                     ),
@@ -183,6 +178,10 @@ class _CreateAccountState extends State<CreateAccount> {
                 // height: 45,
                 child: new DropdownButtonFormField<String>(
                   decoration: InputDecoration(
+                    labelText: 'Register as...',
+                    labelStyle: TextStyle(
+                        color: Colors.white54
+                    ),
                     prefixIcon: Image.asset('images/icon_user.png'),
                   ),
                   style: const TextStyle(color: Colors.white54),
@@ -216,13 +215,7 @@ class _CreateAccountState extends State<CreateAccount> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(
-                      'Password',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w300,
-                          fontSize: 13,
-                          color: Colors.white),
-                    ),
+
                     SizedBox(
                       height: 10,
                     ),
@@ -232,6 +225,10 @@ class _CreateAccountState extends State<CreateAccount> {
                       obscureText: true,
                       cursorColor: Colors.white,
                       decoration: InputDecoration(
+                        labelText: 'Password',
+                        labelStyle: TextStyle(
+                            color: Colors.white54
+                        ),
                         border: InputBorder.none,
                         fillColor: Color(0xfff3B324E),
                         filled: true,
@@ -254,13 +251,7 @@ class _CreateAccountState extends State<CreateAccount> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(
-                      'Confirm Password',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w300,
-                          fontSize: 13,
-                          color: Colors.white),
-                    ),
+
                     SizedBox(
                       height: 10,
                     ),
@@ -270,6 +261,10 @@ class _CreateAccountState extends State<CreateAccount> {
                       obscureText: true,
                       cursorColor: Colors.white,
                       decoration: InputDecoration(
+                        labelText: 'Confirm Password',
+                        labelStyle: TextStyle(
+                            color: Colors.white54
+                        ),
                         border: InputBorder.none,
                         fillColor: Color(0xfff3B324E),
                         filled: true,
@@ -287,25 +282,7 @@ class _CreateAccountState extends State<CreateAccount> {
                   ],
                 ),
               ),
-              /*Container(
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Expanded(
-                      child: DropdownButtonHideUnderline(
-                        child: ButtonTheme(
-                          alignedDropdown: true,
-                          child: DropdownButton<String>(
-                            value: _mystate,
-                            iconSize: 30,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),*/
+
               Container(
                 margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
               ),
@@ -321,8 +298,7 @@ class _CreateAccountState extends State<CreateAccount> {
                       });
                       try {
                         var user = await LoginApi.register(name, email, password, confirmPassword, role);
-                        print(user);
-                        if (user != null) {
+                        if (user) {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -336,24 +312,6 @@ class _CreateAccountState extends State<CreateAccount> {
                       } catch (e) {
                         print(e);
                       }
-                      /*try {
-                        final newUser =
-                        await _auth.createUserWithEmailAndPassword(
-                            email: email, password: password);
-                        if (newUser != null) {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SuccessScreen()));
-                        }
-
-                        setState(() {
-                          showSpinner = false;
-                        });
-                      } catch (e) {
-                        print(e);
-                      }*/
-                      // Add login code
                     },
                   ),
                 ),
